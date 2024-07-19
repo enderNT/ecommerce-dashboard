@@ -1,10 +1,10 @@
 import './App.css'
-import Dashboard from './dashboard/Dashboard'
+import Drawer from './Layouts/DrawerLayouts/Drawer/Drawer'
 
 function App () {
   return (
     <>
-      <Dashboard />
+      <Drawer />
     </>
   )
 }
