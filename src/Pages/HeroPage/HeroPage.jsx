@@ -7,7 +7,7 @@ import HeroSectionGraphicCard from '../../Layouts/HeroSectionLayouts/HeroSection
 
 export default function HeroPage () {
   return (
-    <div>
+    <div className='grid grid-cols-3'>
       <HeroSectionHeader />
       <HeroSectionActions />
       <HeroSectionInboxCard />

@@ -1,7 +1,7 @@
 import './HeroSectionHeaderInput.css'
 function HeroSectionHeaderInput () {
   return (
-    <>
+    <div className='max-w-[395px] self-center'>
       <label className='input input-bordered flex items-center gap-2'>
         <input type='text' className='grow' placeholder='Search' />
         <svg
@@ -17,7 +17,7 @@ function HeroSectionHeaderInput () {
           />
         </svg>
       </label>
-    </>
+    </div>
   )
 }
 
