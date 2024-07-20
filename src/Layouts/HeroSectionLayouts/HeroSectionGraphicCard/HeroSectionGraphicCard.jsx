@@ -1,11 +1,12 @@
 export default function HeroSectionGraphicCard () {
   return (
     <div
-      className='py-6 bg-white shadow-md ml-[15vw] grid row-start-3 row-span-2 col-span-2 mr-6'
+      className='py-6 bg-white shadow-md ml-[18vw] grid row-start-3 row-span-2 col-span-2 mr-6 rounded-2xl'
     >
       <h6 className='text-[#252733] font-bold text-lg w-full mx-6'>Today's trends</h6>
-      <div className='flex'>
-        <h6 className="font-normal text-xs text-[#9FA2B4]">30 de Septiembre</h6>
+      <div className='flex justify-between'>
+        <h6 className="font-normal text-xs text-[#9FA2B4] ml-6">30 de Septiembre</h6>
+        <div className="flex mr-6">
         <svg
           viewBox='0 0 1024 1024'
           fill='#3751FF'
@@ -28,8 +29,9 @@ export default function HeroSectionGraphicCard () {
           />
         </svg>
         <span className="font-semibold text-xs text-[#9FA2B4]">Yesterday</span>
+        </div>
       </div>
-      <div className='container'>
+      <div className='container w-full h-full'>
         <img
           src='https://png.pngtree.com/element_our/20190529/ourmid/pngtree-ppt-data-analysis-line-chart-png-free-map-image_1187995.jpg'
           alt='graphic'

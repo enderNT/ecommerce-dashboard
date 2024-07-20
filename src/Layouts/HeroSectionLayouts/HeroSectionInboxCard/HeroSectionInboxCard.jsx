@@ -1,7 +1,7 @@
 export default function HeroSectionInboxCard () {
   return (
     <div
-      className='py-6 bg-white shadow-md ml-6 w-[38vw] grid row-start-3 text-black rounded-2xl'
+      className='py-6 bg-white shadow-md ml-6 w-[36vw] grid row-start-3 text-black rounded-2xl'
     >
       <div className='flex justify-between'>
         <div className='mx-8'>

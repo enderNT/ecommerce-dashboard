@@ -1,7 +1,7 @@
 export default function HeroSectionActivityCard () {
   return (
     <div
-      className='py-6 bg-white shadow-md w-[38vw] grid row-start-4 h-[40vh] ml-6 text-black rounded-2xl'
+      className='py-6 bg-white shadow-md w-[36vw] grid row-start-4 h-full ml-6 text-black rounded-2xl'
     >
         <div className='mb-8 flex justify-between'>
           <h3 className="mx-8 font-medium text-lg">Recent Activity</h3>
