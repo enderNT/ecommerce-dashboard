@@ -1,11 +1,20 @@
 function DrawerListOptions () {
   return (
-    <>
-      <ul className='menu bg-base-200 text-base-content min-h-full w-80 p-4'>
-        <button className='btn'>
+      <ul className='menu bg-white min-h-full w-80'>
+        <div className="mx-auto mt-5">
+          <svg
+            viewBox="0 0 1024 1024"
+            fill="#2A4178"
+            height="5em"
+            width="5em">
+            <path
+              d="M705.6 124.9a8 8 0 00-11.6 7.2v64.2c0 5.5 2.9 10.6 7.5 13.6a352.2 352.2 0 0162.2 49.8c32.7 32.8 58.4 70.9 76.3 113.3a355 355 0 0127.9 138.7c0 48.1-9.4 94.8-27.9 138.7a355.92 355.92 0 01-76.3 113.3 353.06 353.06 0 01-113.2 76.4c-43.8 18.6-90.5 28-138.5 28s-94.7-9.4-138.5-28a353.06 353.06 0 01-113.2-76.4A355.92 355.92 0 01184 650.4a355 355 0 01-27.9-138.7c0-48.1 9.4-94.8 27.9-138.7 17.9-42.4 43.6-80.5 76.3-113.3 19-19 39.8-35.6 62.2-49.8 4.7-2.9 7.5-8.1 7.5-13.6V132c0-6-6.3-9.8-11.6-7.2C178.5 195.2 82 339.3 80 506.3 77.2 745.1 272.5 943.5 511.2 944c239 .5 432.8-193.3 432.8-432.4 0-169.2-97-315.7-238.4-386.7zM480 560h64c4.4 0 8-3.6 8-8V88c0-4.4-3.6-8-8-8h-64c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8z" />
+          </svg>
+        </div>
+        <button className='btn bg-[#F8FAFF] text-[#2A4178] text-base font-medium border-none shadow-md mt-11 mx-8'>
           <svg
             viewBox='0 0 24 24'
-            fill='currentColor'
+            fill='#2A4178'
             height='1em'
             width='1em'
           >
@@ -15,10 +24,10 @@ function DrawerListOptions () {
           </svg>
           Dashboard
         </button>
-        <button className='btn'>
+        <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
           <svg
             viewBox='0 0 1024 1024'
-            fill='currentColor'
+            fill='#A7B7DD'
             height='1em'
             width='1em'
           >
@@ -28,9 +37,9 @@ function DrawerListOptions () {
           </svg>
           Order
         </button>
-        <button className='btn'>
+        <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
           <svg
-            fill='currentColor'
+            fill='#A7B7DD'
             viewBox='0 0 16 16'
             height='1em'
             width='1em'
@@ -41,10 +50,10 @@ function DrawerListOptions () {
           </svg>
           Products
         </button>
-        <button className='btn'>
+        <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
           <svg
             viewBox='0 0 24 24'
-            fill='currentColor'
+            fill='#A7B7DD'
             height='1em'
             width='1em'
           >
@@ -54,10 +63,10 @@ function DrawerListOptions () {
           </svg>
           Shipping
         </button>
-        <button className='btn'>
+        <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
           <svg
             fill='none'
-            stroke='currentColor'
+            stroke='#A7B7DD'
             strokeLinecap='round'
             strokeLinejoin='round'
             strokeWidth={2}
@@ -70,10 +79,10 @@ function DrawerListOptions () {
           </svg>
           Payments
         </button>
-        <button className='btn'>
+        <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
           <svg
             viewBox='0 0 512 512'
-            fill='currentColor'
+            fill='#A7B7DD'
             height='1em'
             width='1em'
           >
@@ -84,7 +93,6 @@ function DrawerListOptions () {
           Settings
         </button>
       </ul>
-    </>
   )
 }
 

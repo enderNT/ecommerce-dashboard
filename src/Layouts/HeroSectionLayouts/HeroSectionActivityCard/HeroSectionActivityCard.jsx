@@ -1,7 +1,8 @@
 export default function HeroSectionActivityCard() {
     return (
         <>
-            <div className="card bg-white shadow-xl grid row-span-4 ml-6">
+            <div
+                className="card bg-white shadow-md w-[40vw] grid row-start-4 ml-6 text-black rounded-2xl">
                 <div className="card-body">
                     <div className="flex">
                         <h3>Recent Activity</h3>

@@ -1,6 +1,7 @@
 export default function HeroSectionInboxCard() {
     return (
-            <div className='card bg-white shadow-xl ml-6'>
+            <div
+                className='card bg-white shadow-md ml-6 w-[40vw] row-start-3 text-black rounded-2xl'>
                 <div className='card-body'>
                     <div className="flex space-evenly">
                         <div>
