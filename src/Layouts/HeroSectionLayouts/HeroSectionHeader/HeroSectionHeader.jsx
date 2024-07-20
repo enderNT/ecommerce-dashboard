@@ -8,9 +8,9 @@ export default function HeroSectionHeader () {
       <div
         className='col-start-1 px-8 py-4'
         id='heroSectionHeaderLeft'>
-        <h5 className='text-xs font-normal'>Total revenue</h5>
+        <h5 className='text-black text-xs font-normal'>Total revenue</h5>
         <div className="flex items-center">
-          <h2 className='text-[28px] font-semibold mr-4'>$9999</h2>
+          <h2 className='text-black text-[28px] font-semibold mr-4'>$9999</h2>
           <svg
             viewBox="0 0 20 20"
             fill="red"

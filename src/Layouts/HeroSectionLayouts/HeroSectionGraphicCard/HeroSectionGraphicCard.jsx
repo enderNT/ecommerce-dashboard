@@ -1,6 +1,6 @@
 export default function HeroSectionGraphicCard() {
     return(
-        <div className="card w-96 shadow-xl">
+        <div className="card bg-white shadow-xl grid row-start-3 row-span-4 col-start-2 col-span-2 mr-6 self-stretch">
             <div className="card-title">Today's trend</div>
             <div className="flex">
                 <p>30 de Septiembre</p>

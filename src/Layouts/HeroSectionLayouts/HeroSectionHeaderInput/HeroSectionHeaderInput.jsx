@@ -1,9 +1,9 @@
 import './HeroSectionHeaderInput.css'
 function HeroSectionHeaderInput () {
   return (
-    <div className='max-w-[395px] self-center'>
-      <label className='input input-bordered flex items-center gap-2'>
-        <input type='text' className='grow' placeholder='Search' />
+    <div className='w-full self-center'>
+      <label className='bg-white input input-bordered flex items-center gap-2'>
+        <input type='text' className='bg-white grow' placeholder='Search' />
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 16 16'
