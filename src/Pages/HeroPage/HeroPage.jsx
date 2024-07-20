@@ -7,12 +7,12 @@ import HeroSectionGraphicCard from '../../Layouts/HeroSectionLayouts/HeroSection
 
 export default function HeroPage () {
   return (
-    <div>
+    <div className='grid grid-auto-rows grid-cols-3 gap-8 p-4'>
       <HeroSectionHeader />
       <HeroSectionActions />
       <HeroSectionInboxCard />
       <HeroSectionActivityCard />
-      <HeroSectionGraphicCard/>
+      <HeroSectionGraphicCard />
     </div>
   )
 }

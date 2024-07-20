@@ -1,14 +1,13 @@
 import './HeroSectionHeaderInput.css'
 function HeroSectionHeaderInput () {
   return (
-    <>
-      <label className='input input-bordered flex items-center gap-2'>
-        <input type='text' className='grow' placeholder='Search' />
+    <div className='w-full self-center'>
+      <label className='bg-white shadow-inner font-normal text-lg input input-bordered flex items-center gap-2'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 16 16'
           fill='currentColor'
-          className='h-4 w-4 opacity-70'
+          className='h-6 w-6 opacity-70'
         >
           <path
             fillRule='evenodd'
@@ -16,8 +15,9 @@ function HeroSectionHeaderInput () {
             clipRule='evenodd'
           />
         </svg>
+        <input type='text' className='bg-white grow' placeholder='Search' />
       </label>
-    </>
+    </div>
   )
 }
 
