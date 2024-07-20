@@ -12,7 +12,7 @@ export default function HeroPage () {
       <HeroSectionActions />
       <HeroSectionInboxCard />
       <HeroSectionActivityCard />
-      <HeroSectionGraphicCard/>
+      <HeroSectionGraphicCard />
     </div>
   )
 }
