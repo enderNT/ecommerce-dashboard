@@ -2,6 +2,7 @@ import DrawerFooter from '../DrawerFooter/DrawerFooter'
 import DrawerListOptions from '../DrawerListOptions/DrawerListOptions'
 import HeroPage from '../../../Pages/HeroPage/HeroPage'
 import './Drawer.css'
+import { Outlet } from 'react-router-dom'
 
 export default function Drawer () {
   return (
@@ -14,7 +15,7 @@ export default function Drawer () {
         >
           Menu
         </label>
-        <HeroPage />
+        <Outlet/>
       </div>
       <div className='drawer-side w-48'>
         <label htmlFor='my-drawer-2' aria-label='close sidebar' className='drawer-overlay' />
