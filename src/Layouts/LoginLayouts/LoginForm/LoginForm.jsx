@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './LoginForm.css'
 
 export default function LoginForm() {
@@ -16,6 +17,14 @@ export default function LoginForm() {
                 </div>
                 <input type='text' className='bg-white input input-bordered border-[#D9D9D9]' placeholder='************' />
             </label>
+            <button className="my-2 bg-[#2C2C2C] btn btn-active text-[#F5F5F5]">Sign in</button>
+            <NavLink
+                to="/register"
+                className="my-1 link link-primary">
+                Do not you have an account yet?.
+                <br />
+                Create a new.
+            </NavLink>
         </div>
     )
 }

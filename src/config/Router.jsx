@@ -7,11 +7,11 @@ import OrdersPage from '../Pages/Orders/Orders'
 
 export const ROUTER = createBrowserRouter([
   {
-    path: '/',
+    path: '/dashboard',
     element: <Drawer />,
     children: [
       {
-        path: '/',
+        path: '/dashboard',
         element: <HeroPage />
       },
       {
@@ -21,7 +21,7 @@ export const ROUTER = createBrowserRouter([
     ]
   },
   {
-    path: '/login',
+    path: 'login',
     element: <LoginPage />
   },
   {
