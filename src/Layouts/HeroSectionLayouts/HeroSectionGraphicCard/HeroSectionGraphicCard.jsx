@@ -5,30 +5,30 @@ export default function HeroSectionGraphicCard () {
     >
       <h6 className='text-[#252733] font-bold text-lg w-full mx-6'>Today's trends</h6>
       <div className='flex justify-between'>
-        <h6 className="font-normal text-xs text-[#9FA2B4] ml-6">30 de Septiembre</h6>
-        <div className="flex mr-6">
-        <svg
-          viewBox='0 0 1024 1024'
-          fill='#3751FF'
-          height='1em'
-          width='1em'
-        >
-          <path
-            d='M904 476H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z'
-          />
-        </svg>
-        <span className="font-semibold text-xs text-[#9FA2B4]">Today</span>
-        <svg
-          viewBox='0 0 1024 1024'
-          fill='#DFE0EB'
-          height='1em'
-          width='1em'
-        >
-          <path
-            d='M904 476H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z'
-          />
-        </svg>
-        <span className="font-semibold text-xs text-[#9FA2B4]">Yesterday</span>
+        <h6 className='font-normal text-xs text-[#9FA2B4] ml-6'>30 de Septiembre</h6>
+        <div className='flex mr-6'>
+          <svg
+            viewBox='0 0 1024 1024'
+            fill='#3751FF'
+            height='1em'
+            width='1em'
+          >
+            <path
+              d='M904 476H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z'
+            />
+          </svg>
+          <span className='font-semibold text-xs text-[#9FA2B4]'>Today</span>
+          <svg
+            viewBox='0 0 1024 1024'
+            fill='#DFE0EB'
+            height='1em'
+            width='1em'
+          >
+            <path
+              d='M904 476H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z'
+            />
+          </svg>
+          <span className='font-semibold text-xs text-[#9FA2B4]'>Yesterday</span>
         </div>
       </div>
       <div className='container w-full h-full'>
