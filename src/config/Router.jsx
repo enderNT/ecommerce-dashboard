@@ -28,4 +28,4 @@ export const ROUTER = createBrowserRouter([
         path: "register",
         element: <RegisterPage />
     }
-]);n 
+]);
