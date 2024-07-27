@@ -15,7 +15,7 @@ export default function Drawer () {
         >
           Menu
         </label>
-        <Outlet/>
+        <Outlet />
       </div>
       <div className='drawer-side w-48'>
         <label htmlFor='my-drawer-2' aria-label='close sidebar' className='drawer-overlay' />
