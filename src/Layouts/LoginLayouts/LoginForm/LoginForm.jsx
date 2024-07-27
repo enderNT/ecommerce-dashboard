@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import './LoginForm.css'
 import { useEffect, useState } from 'react'
-import { loginApiCall } from '../../../utils/api'
+// import { loginApiCall } from '../../../utils/api'
+import { useDispatch } from 'react-redux'
+import { authUser } from '../../../redux/reducers/userSlice'
 
 export default function LoginForm() {
+
+    const dispatch = useDispatch()
 
     const [userDataObj, setUserDataObj] = useState({
         username: "",
@@ -16,16 +20,16 @@ export default function LoginForm() {
         disableButton(userDataObj, ['username', 'password'])
     }, [userDataObj])
 
-    const authenticate = async (userDataAuth) => {
-        try {
-            loginApiCall({
-                "identity": userDataAuth.username,
-                "password": userDataAuth.password
+    const authenticate = (userDataAuth) => {
+        let bodyObjBuild = {
+            identity: userDataAuth.username,
+            password: userDataAuth.password
+        } 
+        dispatch(authUser(bodyObjBuild))
+            .then(result => {
+                console.log('EN COMPONENTE SE TUVO COMO RESULTADO:\n', result.payload)
             })
-            console.log('LA RESPUESTA OK FUE', data)
-        } catch (error) {
-            console.error('EL ERROR FUE',error)
-        }
+            .catch(err => console.error('HUBO UN ERROR Y ESO ES:\n', err))
     }
 
     const handleUserDataChange = (evnt) => {

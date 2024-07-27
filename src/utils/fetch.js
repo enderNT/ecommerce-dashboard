@@ -5,10 +5,9 @@ export const URL_CONFIG = {
 }
 
 export const apiCall = async ({endpoint, method, env, body}) => {
-    const response = await fetch(`${URL_CONFIG[env]}/${endpoint}`, {
+    const response = await fetch(`${URL_CONFIG[env]}:8090/${endpoint}`, {
         body: JSON.stringify(body),
         method,
-        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         }
