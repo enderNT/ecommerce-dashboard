@@ -1,30 +1,27 @@
 import { NavLink } from 'react-router-dom'
 import './LoginForm.css'
 import { useEffect, useState } from 'react'
+import { loginApiCall } from '../../../utils/api'
 
 export default function LoginForm() {
+
     const [userDataObj, setUserDataObj] = useState({
         username: "",
         password: ""
     })
+
+    const [loginBtnActive, setLoginBtnActive] = useState(false)
+
     useEffect(() => {
-        console.log('EL VALOR DE userDataObj ahora tiene\n', userDataObj)
+        disableButton(userDataObj, ['username', 'password'])
     }, [userDataObj])
 
     const authenticate = async (userDataAuth) => {
         try {
-            const response = await fetch('http://127.0.0.1:8090/api/collections/users/auth-with-password', {
-                body: JSON.stringify({
-                    "identity": userDataAuth.username,
-                    "password": userDataAuth.password
-                }),
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
+            loginApiCall({
+                "identity": userDataAuth.username,
+                "password": userDataAuth.password
             })
-            const data = await response.json()
             console.log('LA RESPUESTA OK FUE', data)
         } catch (error) {
             console.error('EL ERROR FUE',error)
@@ -42,7 +39,19 @@ export default function LoginForm() {
                 return {...prevValUserData, password: value}
             })
         }
-    } 
+    }
+    
+    /**
+     * Validates all fields diferent from empty string in objValidate.
+     * Fields is array of fields existing in objValidate
+     * @param {Object} objValidate 
+     * @param {Array} fields 
+     * @returns Validation
+     */
+    const disableButton = (objValidate, fields) => { // Crear test unitarios
+        const validFields = fields.some((val) => objValidate[val] === "")
+        setLoginBtnActive(validFields)
+    }
 
     return (
         <div
@@ -66,6 +75,7 @@ export default function LoginForm() {
                     type='text' className='bg-white input input-bordered border-[#D9D9D9]' placeholder='************' />
             </label>
             <button
+                disabled={loginBtnActive ?? null}
                 onClick={() => authenticate(userDataObj)}
                 className="my-2 bg-[#2C2C2C] btn btn-active text-[#F5F5F5]">Sign in</button>
             <NavLink
