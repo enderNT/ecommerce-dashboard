@@ -7,7 +7,7 @@ const PATH = {
 export const loginApiCall = async (body) => {
     const data = await apiCall({
         body, endpoint: PATH.authenticate, method: 'POST',
-        env: 'localDev'
+        env: 'devOnline'
     })
     return data
 }

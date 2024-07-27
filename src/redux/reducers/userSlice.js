@@ -5,51 +5,62 @@ export const authUser = createAsyncThunk(
     'user/auth',
     async (body) => {
         const data = await loginApiCall(body)
-        window.localStorage.setItem("userdata", data) //sessionstorage
         return data
     })
 
 const userReducer = createSlice({
-    name: 'userActions',
+    name: 'user',
     initialState: {
-        value: 0,
+        isAuthenticated: false,
+        isLoading: false,
+        hasError: false,
         userData: {
+            name: "",
             username: "",
             email: "",
             avatar: ""
         }
     },
     reducers: {
-        incremented: state => {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            state.value += 1
-        },
-        decremented: state => {
-            state.value -= 1
-        },
+      setError: (state) => {
+        state.hasError = false
+      }
     },
     extraReducers: (builder) => {
-        builder.addCase(authUser.fulfilled, (state, action) => {
-            console.log('request status es', action.meta.requestStatus)
-            console.log('LA ACCION CON PAYLOAD ES\n', action.payload)
-        })
+        builder
+          .addCase(authUser.fulfilled, (state, action) => {
+            state.isLoading = false
+            const hasData = Boolean(action.payload.record)
+            if(!hasData) {
+              state.isAuthenticated = false
+              state.hasError = true
+              return state
+            }
+            const { record } = action.payload
+            state.isAuthenticated = true
+            state.hasError = false
+            state.userData = {
+              name: record.name,
+              username: record.username,
+              email: record.email,
+              avatar: record.avatar
+            }
+          })
+          .addCase(authUser.pending, (state) => {
+            state.isLoading = true
+            state.hasError = false
+            state.isAuthenticated = false
+            state.userData = { name: '', username:'', email: '', avatar: '' }
+          })
+          .addCase(authUser.rejected, (state) => {
+            state.isLoading = false
+            state.isAuthenticated = false
+            state.hasError = true
+            state.userData = { name: '', username:'', email: '', avatar: '' }
+          })
     }
 })
 
-export const { incremented, decremented } = userReducer.actions
-
-// // Can still subscribe to the store
-// store.subscribe(() => console.log(store.getState()))
-
-// // Still pass action objects to `dispatch`, but they're created for us
-// store.dispatch(incremented())
-// // {value: 1}
-// store.dispatch(incremented())
-// // {value: 2}
-// store.dispatch(decremented())
-// // {value: 1}
+export const { setError } = userReducer.actions
 
 export default userReducer

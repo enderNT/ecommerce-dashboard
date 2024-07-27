@@ -1,35 +1,53 @@
-import { NavLink } from 'react-router-dom'
-import './LoginForm.css'
+import Cookies from 'js-cookie'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-// import { loginApiCall } from '../../../utils/api'
 import { useDispatch } from 'react-redux'
-import { authUser } from '../../../redux/reducers/userSlice'
+import { authUser, setError } from '../../../redux/reducers/userSlice'
+import { useSelector } from 'react-redux'
+import './LoginForm.css'
 
 export default function LoginForm() {
 
+  const { isLoading } = useSelector(state => state.user)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [userDataObj, setUserDataObj] = useState({
         username: "",
         password: ""
     })
-
     const [loginBtnActive, setLoginBtnActive] = useState(false)
 
     useEffect(() => {
         disableButton(userDataObj, ['username', 'password'])
-    }, [userDataObj])
+    }, [userDataObj, isLoading])
 
     const authenticate = (userDataAuth) => {
         let bodyObjBuild = {
             identity: userDataAuth.username,
             password: userDataAuth.password
-        } 
+        }
         dispatch(authUser(bodyObjBuild))
             .then(result => {
-                console.log('EN COMPONENTE SE TUVO COMO RESULTADO:\n', result.payload)
+              const hasData = Boolean(result.payload.record)
+              if(hasData) {
+                console.log('HUBO DATA PARA EL COMPONENTE', result.payload.record)
+                setLocalData(result.payload.record, result.payload.token)
+                navigate('/dashboard', {state: {from: '/dashboard'}, replace: true})
+              }
             })
             .catch(err => console.error('HUBO UN ERROR Y ESO ES:\n', err))
+    }
+
+    const setLocalData = (userData, token) => {
+      window.localStorage.setItem("userNickname", userData.username)
+      window.localStorage.setItem("userEmail", userData.email)
+      window.localStorage.setItem("userName", userData.name)
+      window.localStorage.setItem("userAvatar", userData.avatar)
+      Cookies.set(
+        'token',
+        token, { secure: true }
+      )
     }
 
     const handleUserDataChange = (evnt) => {
@@ -44,7 +62,7 @@ export default function LoginForm() {
             })
         }
     }
-    
+
     /**
      * Validates all fields diferent from empty string in objValidate.
      * Fields is array of fields existing in objValidate
@@ -52,9 +70,12 @@ export default function LoginForm() {
      * @param {Array} fields 
      * @returns Validation
      */
-    const disableButton = (objValidate, fields) => { // Crear test unitarios
-        const validFields = fields.some((val) => objValidate[val] === "")
-        setLoginBtnActive(validFields)
+    const disableButton = (objValidate, fields) => {
+        let disabled = fields.some((val) => objValidate[val] === "") // false
+        if (isLoading) {
+          disabled = true;
+        }
+        setLoginBtnActive(disabled)
     }
 
     return (
