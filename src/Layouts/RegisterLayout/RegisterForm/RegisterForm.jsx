@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { REGEX } from '../../../utils/constants'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { registerUser } from '../../../redux/reducers/user/actions&Thunks'
+import { registerUserMessageError } from '../../../utils/normalizer'
 
 export default function RegisterForm () {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const {isLoading} = useSelector(state => state.user)
 
   const [userDataObj, setUserDataObj] = useState({
     userFullName: '',
@@ -37,6 +40,9 @@ export default function RegisterForm () {
           objValidate['password'] === objValidate['passwordConfirm']
         ) {
         disabled = false
+      }
+      if(isLoading) {
+        disabled = isLoading
       }
       setRegisterBtnActive(disabled)
     }
@@ -78,9 +84,13 @@ export default function RegisterForm () {
         .then(result => {
           const hasId = !!result.payload.id;
           setIsError(!hasId);
-          console.log('EL RESULTADO FUE\n', result);
+          console.log('TRAE LA SIGUIENTE INFORMACION', result.payload)
+          if(!hasId) {
+            const err = registerUserMessageError(result.payload)
+            setIsError(err)
+          }
           if (hasId) {
-            console.log('HUBO RESULTADO Y FUE:', result.payload);
+            navigate('/login')
           }
         })
         .catch(e => console.error('error', e))
@@ -185,7 +195,7 @@ export default function RegisterForm () {
         <br />
         Login.
       </NavLink>
-      {isError && <span>Hubo un error</span>}
+      {isError && <span>The email or username is already exists</span>}
     </div>
   )
 }

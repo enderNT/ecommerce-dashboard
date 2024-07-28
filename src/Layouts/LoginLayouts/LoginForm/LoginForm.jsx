@@ -15,6 +15,7 @@ export default function LoginForm () {
     password: ''
   })
   const [loginBtnActive, setLoginBtnActive] = useState(true)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     disableButton(userDataObj, ['username', 'password'])
@@ -27,8 +28,11 @@ export default function LoginForm () {
     }
     dispatch(authUser(bodyObjBuild))
       .then(result => {
-        const hasData = Boolean(result.payload.record)
-        if (hasData) {
+        const hasRecord = Boolean(result.payload.record)
+        if(!hasRecord) {
+          setIsError(true)
+        }
+        if (hasRecord) {
           setLocalData(result.payload.record, result.payload.token)
           navigate('/dashboard', { state: { from: '/dashboard' }, replace: true })
         }
@@ -114,6 +118,7 @@ export default function LoginForm () {
         <br />
         Create a new.
       </NavLink>
+      {isError && <span>There was an error</span>}
     </div>
   )
 }

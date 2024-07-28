@@ -15,7 +15,7 @@ export const loginApiCall = async (body) => {
     body,
     endpoint: PATH.authenticate,
     method: 'POST',
-    env: 'localDev'
+    env: 'devOnline'
   })
   return data
 }
@@ -30,7 +30,7 @@ export const registerApiCall = async (body) => {
     body,
     endpoint: PATH.register,
     method: 'POST',
-    env: 'localDev'
+    env: 'devOnline'
   })
   return data
 } 
