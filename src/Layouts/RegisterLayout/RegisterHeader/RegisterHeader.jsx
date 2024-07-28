@@ -1,4 +1,4 @@
-export default function LoginHeader () {
+export default function RegisterHeader () {
   return (
     <div className='bg-[#F8F7FC] h-full p-2'>
       <div className='bg-white rounded-[50%] w-[5%] h-[95%]'>

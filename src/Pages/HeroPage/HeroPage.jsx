@@ -9,19 +9,15 @@ import { Navigate } from 'react-router-dom'
 import './HeroPage.css'
 
 export default function HeroPage () {
-  const {isAuthenticated, userData} = useSelector(state => state.user)
+  const { isAuthenticated, userData } = useSelector(state => state.user)
   const hasData = Boolean(userData)
 
-  console.log(hasData, !Cookies.get('token'), isAuthenticated)
-
-  if(!hasData || !Cookies.get('token')) {
-    console.log('DEBERIA IRSE DE AQUI')
+  if (!hasData || !Cookies.get('token')) {
     Cookies.remove('token')
-    return <Navigate to='/login' replace={true} />
+    return <Navigate to='/login' replace />
   }
-  
-  if(isAuthenticated) {
-    console.log('DEBERIA DE QUEDARSE AQUI EN DASHBOARD')
+
+  if (isAuthenticated) {
     return (
       <div className='grid grid-auto-rows grid-cols-3 gap-8 p-4'>
         <HeroSectionHeader />
