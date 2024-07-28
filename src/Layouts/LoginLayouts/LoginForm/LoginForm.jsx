@@ -14,7 +14,7 @@ export default function LoginForm () {
     username: '',
     password: ''
   })
-  const [loginBtnActive, setLoginBtnActive] = useState(false)
+  const [loginBtnActive, setLoginBtnActive] = useState(true)
 
   useEffect(() => {
     disableButton(userDataObj, ['username', 'password'])
@@ -60,15 +60,16 @@ export default function LoginForm () {
     }
   }
 
-  /**
-     * Validates all fields diferent from empty string in objValidate.
-     * Fields is array of fields existing in objValidate
-     * @param {Object} objValidate
-     * @param {Array} fields
-     * @returns Validation
-     */
+/**
+ * Validates if any specified fields in the objValidate object are empty strings.
+ * If any field is empty or if loading is in progress, disables the login button.
+ *
+ * @param {Object} objValidate - The object containing the fields to validate.
+ * @param {Array} fields - An array of field names to check in objValidate.
+ * @returns {void}
+ */
   const disableButton = (objValidate, fields) => {
-    let disabled = fields.some((val) => objValidate[val] === '') // false
+    let disabled = fields.some((val) => objValidate[val] === '')
     if (isLoading) {
       disabled = true
     }
@@ -81,7 +82,7 @@ export default function LoginForm () {
     >
       <label className='max-w-[400px] form-control'>
         <div className='label'>
-          <span className='label-text font-normal text-base text-[#1E1E1E]'>Email</span>
+          <span className='label-text font-normal text-base text-[#1E1E1E]'>Username or Email</span>
         </div>
         <input
           id='userUsername'
