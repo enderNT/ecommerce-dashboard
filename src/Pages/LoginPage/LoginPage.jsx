@@ -2,14 +2,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import LoginForm from '../../Layouts/LoginLayouts/LoginForm/LoginForm'
 import LoginHeader from '../../Layouts/LoginLayouts/LoginHeader/LoginHeader'
 import { useEffect } from 'react'
-import { setError } from '../../redux/reducers/user/userSlice'
+import { resetError } from '../../redux/reducers/user/userSlice'
 
 export default function LoginPage () {
   const dispatch = useDispatch()
   const { hasError } = useSelector(state => state.user)
   useEffect(() => {
     const timer = setTimeout(() => {
-      dispatch(setError())
+      dispatch(resetError())
     }, 3000)
     return () => clearInterval(timer)
   }, [dispatch, hasError])

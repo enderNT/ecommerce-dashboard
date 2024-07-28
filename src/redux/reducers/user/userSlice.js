@@ -1,4 +1,5 @@
-import { authUser } from "./actions&Thunks"
+import { createSlice } from "@reduxjs/toolkit"
+import { authUser, registerUser } from "./actions&Thunks"
 
 const userReducer = createSlice({
   name: 'user',
@@ -14,7 +15,7 @@ const userReducer = createSlice({
     }
   },
   reducers: {
-    setError: (state) => {
+    resetError: (state) => {
       state.hasError = false
     }
   },
@@ -42,17 +43,28 @@ const userReducer = createSlice({
         state.isLoading = true
         state.hasError = false
         state.isAuthenticated = false
-        state.userData = { name: '', username: '', email: '', avatar: '' }
       })
       .addCase(authUser.rejected, (state) => {
         state.isLoading = false
         state.isAuthenticated = false
         state.hasError = true
-        state.userData = { name: '', username: '', email: '', avatar: '' }
+        state.userData = {
+          name: '', username: '',
+          email: '', avatar: ''
+        }
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        console.log('ENTRO EN LA ACCION FULLFILED Y TRAE ESTO\n', action)
+        state.isLoading = false
+        state.hasError = Boolean(action.payload.id)
+      })
+      .addCase(registerUser.pending, (state, action) => {
+        console.log('ENTRO EN LA ACCION PENDING Y TRAE ESTO\n', action)
+        state.isLoading = true
       })
   }
 })
 
-export const { setError } = userReducer.actions
+export const { resetError } = userReducer.actions
 
 export default userReducer
