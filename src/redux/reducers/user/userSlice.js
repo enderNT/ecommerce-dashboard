@@ -1,12 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { loginApiCall } from '../../utils/api'
-
-export const authUser = createAsyncThunk(
-  'user/auth',
-  async (body) => {
-    const data = await loginApiCall(body)
-    return data
-  })
+import { authUser } from "./actions&Thunks"
 
 const userReducer = createSlice({
   name: 'user',

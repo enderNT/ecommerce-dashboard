@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { authUser } from '../../../redux/reducers/userSlice'
+import { authUser } from '../../../redux/reducers/user/actions&Thunks'
 import './LoginForm.css'
 
 export default function LoginForm () {

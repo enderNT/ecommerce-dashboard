@@ -1,7 +1,8 @@
 import { apiCall } from './fetch'
 
 const PATH = {
-  authenticate: 'api/collections/users/auth-with-password'
+  authenticate: 'api/collections/users/auth-with-password',
+  register: 'api/collections/users/records'
 }
 
 export const loginApiCall = async (body) => {
@@ -9,7 +10,17 @@ export const loginApiCall = async (body) => {
     body,
     endpoint: PATH.authenticate,
     method: 'POST',
-    env: 'devOnline'
+    env: 'dev'
   })
   return data
 }
+
+export const registerApiCall = async (body) => {
+  const data = await apiCall({
+    body,
+    endpoint: PATH.register,
+    method: 'POST',
+    env: 'dev'
+  })
+  return data
+} 

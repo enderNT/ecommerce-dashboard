@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import LoginForm from '../../Layouts/LoginLayouts/LoginForm/LoginForm'
 import LoginHeader from '../../Layouts/LoginLayouts/LoginHeader/LoginHeader'
 import { useEffect } from 'react'
-import { setError } from '../../redux/reducers/userSlice'
+import { setError } from '../../redux/reducers/user/userSlice'
 
 export default function LoginPage () {
   const dispatch = useDispatch()
