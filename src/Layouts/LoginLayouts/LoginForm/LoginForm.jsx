@@ -2,13 +2,13 @@ import Cookies from 'js-cookie'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { authUser, setError } from '../../../redux/reducers/userSlice'
+import { authUser } from '../../../redux/reducers/userSlice'
 import { useSelector } from 'react-redux'
 import './LoginForm.css'
 
 export default function LoginForm() {
 
-  const { isLoading } = useSelector(state => state.user)
+    const { isLoading } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -29,36 +29,36 @@ export default function LoginForm() {
         }
         dispatch(authUser(bodyObjBuild))
             .then(result => {
-              const hasData = Boolean(result.payload.record)
-              if(hasData) {
-                console.log('HUBO DATA PARA EL COMPONENTE', result.payload.record)
-                setLocalData(result.payload.record, result.payload.token)
-                navigate('/dashboard', {state: {from: '/dashboard'}, replace: true})
-              }
+                const hasData = Boolean(result.payload.record)
+                if (hasData) {
+                    console.log('HUBO DATA PARA EL COMPONENTE', result.payload.record)
+                    setLocalData(result.payload.record, result.payload.token)
+                    navigate('/dashboard', { state: { from: '/dashboard' }, replace: true })
+                }
             })
             .catch(err => console.error('HUBO UN ERROR Y ESO ES:\n', err))
     }
 
     const setLocalData = (userData, token) => {
-      window.localStorage.setItem("userNickname", userData.username)
-      window.localStorage.setItem("userEmail", userData.email)
-      window.localStorage.setItem("userName", userData.name)
-      window.localStorage.setItem("userAvatar", userData.avatar)
-      Cookies.set(
-        'token',
-        token, { secure: true }
-      )
+        window.localStorage.setItem("userNickname", userData.username)
+        window.localStorage.setItem("userEmail", userData.email)
+        window.localStorage.setItem("userName", userData.name)
+        window.localStorage.setItem("userAvatar", userData.avatar)
+        Cookies.set(
+            'token',
+            token, { secure: true }
+        )
     }
 
     const handleUserDataChange = (evnt) => {
-        const {value} = evnt.target
-        if(evnt.target.id === "userUsername") {
-            setUserDataObj((prevValUserData) => { 
-                return {...prevValUserData, username: value}
+        const { value } = evnt.target
+        if (evnt.target.id === "userUsername") {
+            setUserDataObj((prevValUserData) => {
+                return { ...prevValUserData, username: value }
             })
-        } else if(evnt.target.id === "userPassword"){
-            setUserDataObj((prevValUserData) => { 
-                return {...prevValUserData, password: value}
+        } else if (evnt.target.id === "userPassword") {
+            setUserDataObj((prevValUserData) => {
+                return { ...prevValUserData, password: value }
             })
         }
     }
@@ -73,7 +73,7 @@ export default function LoginForm() {
     const disableButton = (objValidate, fields) => {
         let disabled = fields.some((val) => objValidate[val] === "") // false
         if (isLoading) {
-          disabled = true;
+            disabled = true;
         }
         setLoginBtnActive(disabled)
     }
