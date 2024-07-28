@@ -1,3 +1,3 @@
 export const REGEX = {
-    EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 }
