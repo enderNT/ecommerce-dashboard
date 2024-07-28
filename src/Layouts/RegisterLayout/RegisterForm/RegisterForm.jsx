@@ -8,7 +8,6 @@ import { registerUser } from '../../../redux/reducers/user/actions&Thunks'
 export default function RegisterForm () {
 
   const dispatch = useDispatch()
-  // const {isLoading} = useSelector(state => state.user)
 
   const [userDataObj, setUserDataObj] = useState({
     userFullName: '',
@@ -18,6 +17,11 @@ export default function RegisterForm () {
     passwordConfirm: ''
   })
   const [registerBtnActive, setRegisterBtnActive] = useState(true)
+  const [isError, setIsError] = useState(false)
+  const [invalidFields, setInvalidFields] = useState({
+    email: false, password: false,
+    passwordConfirm: false
+  })
 
   useEffect(() => {
     disableButton(userDataObj)
@@ -72,9 +76,31 @@ export default function RegisterForm () {
       }
       dispatch(registerUser(bodyBuild))
         .then(result => {
-          console.log('EL RESULTADO FUE\n', result)
+          const hasId = !!result.payload.id;
+          setIsError(!hasId);
+          console.log('EL RESULTADO FUE\n', result);
+          if (hasId) {
+            console.log('HUBO RESULTADO Y FUE:', result.payload);
+          }
         })
         .catch(e => console.error('error', e))
+    }
+
+    const validateFields = (evnt) => {
+      const {value, id} = evnt.target
+      if (id === "userEmail" && value !== "") {
+        setInvalidFields((preValue) => {
+          return {...preValue, email: !REGEX.EMAIL.test(value)}
+        })
+      } else if (id === "userPassword" && value !== "") {
+        setInvalidFields((preValue) => {
+          return {...preValue, password: !REGEX.PASSWORD.test(value)}
+        })
+      } else if (id === "userpasswordConfirm" && value !== "") {
+        setInvalidFields((preValue) => {
+          return {...preValue, passwordConfirm: !(userDataObj.password === value)}
+        })
+      } 
     }
 
   return (
@@ -106,31 +132,45 @@ export default function RegisterForm () {
           <span className='label-text font-normal text-base text-[#1E1E1E]'>Email</span>
         </div>
         <input
+          onBlur={validateFields}
           onChange={handleUserDataChange}
           id='userEmail'
           type='text' className='bg-white input input-bordered border-[#D9D9D9]' placeholder='mailexample@mail.com'
         />
       </label>
+      {invalidFields.email && <span className='text-xs font-normal'>Must be a valid email</span>}
       <label className='max-w-[400px] form-control'>
         <div className='label'>
           <span className='label-text font-normal text-base text-[#1E1E1E]'>Password</span>
         </div>
         <input
+          onBlur={validateFields}
           onChange={handleUserDataChange}
           id='userPassword'
           type='text' className='bg-white input input-bordered border-[#D9D9D9]' placeholder='************'
         />
       </label>
+      {invalidFields.password && <span className='text-xs font-normal'>
+        Your password must have at least 8 characters and a maximum of 32
+        <br/>
+        - Lowercase
+        - Uppercase
+        - Numbers.
+        </span>}
       <label className='max-w-[400px] form-control'>
         <div className='label'>
           <span className='label-text font-normal text-base text-[#1E1E1E]'>Retype Password</span>
         </div>
         <input
+          onBlur={validateFields}
           onChange={handleUserDataChange}
           id='userpasswordConfirm'
           type='text' className='bg-white input input-bordered border-[#D9D9D9]' placeholder='************'
         />
       </label>
+      {invalidFields.passwordConfirm && <span className='text-xs font-normal'>
+        Both passwords must be valid and the same.
+        </span>}
       <button
         onClick={() => createUser(userDataObj)}
         disabled={registerBtnActive ?? null}
@@ -145,6 +185,7 @@ export default function RegisterForm () {
         <br />
         Login.
       </NavLink>
+      {isError && <span>Hubo un error</span>}
     </div>
   )
 }
