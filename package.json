@@ -9,7 +9,9 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "standardize": "npx standard --fix",
-    "standardjs": "npx standard"
+    "standardjs": "npx standard",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
