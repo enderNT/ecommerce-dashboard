@@ -1,11 +1,5 @@
-export const URL_CONFIG = {
-  prod: '',
-  devOnline: 'https://pocketbase-gtsr-production.up.railway.app',
-  localDev: 'http://127.0.0.1:8090'
-}
-
 export const apiCall = async ({ endpoint, method, env, body }) => {
-  const response = await fetch(`${URL_CONFIG[env]}/${endpoint}`, {
+  const response = await fetch(`${env}/${endpoint}`, {
     body: JSON.stringify(body),
     method,
     headers: {

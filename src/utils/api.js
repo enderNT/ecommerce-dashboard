@@ -1,3 +1,4 @@
+const VITE_API_URL = import.meta.env.VITE_API_URL
 import { apiCall } from './fetch'
 
 const PATH = {
@@ -15,7 +16,7 @@ export const loginApiCall = async (body) => {
     body,
     endpoint: PATH.authenticate,
     method: 'POST',
-    env: 'devOnline'
+    env: VITE_API_URL
   })
   return data
 }
@@ -26,11 +27,12 @@ export const loginApiCall = async (body) => {
  * @returns Object response
  */
 export const registerApiCall = async (body) => {
+  console.log('LA VARIABLE DE ENTORNO ES:\n', API_URL)
   const data = await apiCall({
     body,
     endpoint: PATH.register,
     method: 'POST',
-    env: 'devOnline'
+    env: VITE_API_URL
   })
   return data
 } 
