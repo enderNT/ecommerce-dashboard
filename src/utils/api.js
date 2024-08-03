@@ -1,7 +1,7 @@
 const VITE_API_URL = import.meta.env.VITE_API_URL
 import { apiCall } from './fetch'
 
-const PATH = {
+export const PATH = {
   authenticate: 'api/collections/users/auth-with-password',
   register: 'api/collections/users/records'
 }
