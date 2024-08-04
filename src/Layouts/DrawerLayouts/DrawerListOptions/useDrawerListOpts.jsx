@@ -16,7 +16,7 @@ export default function useDrawerListOpts() {
 
         if (!userNickname || !userEmail || !userName || !token) {
             Cookies.remove('token')
-            setValidationAct(<Navigate to='/login' replace />)
+            setValidationAct(<Navigate to='/login' replace state={{from: '/login'}} />)
         } else {
             dispatch(setUserData({
                 name: userNickname,
