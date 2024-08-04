@@ -1,16 +1,17 @@
 import { Link, useLocation } from "react-router-dom"
 import './DrawerListOpts.css'
 
-function DrawerListOptions () {
+import { clasNameActive } from '../../../utils/utils'
+import useDrawerListOpts from './useDrawerListOpts.jsx'
+
+function DrawerListOptions() {
   const location = useLocation()
-  const clasNameActive = (locationPath, locationPathTarget) => {
-    if(locationPath === locationPathTarget) {
-      return 'btn bg-[#F8FAFF] text-[#2A4178] text-base font-medium border-none shadow-md mt-11 mx-8'
-    }
-    return 'btn bg-white text-base font-medium border-none mt-11 mx-8'
-  }
+  const { validationAct } = useDrawerListOpts()
+
+
   return (
     <ul className='menu bg-white min-h-full w-80'>
+      {validationAct}
       <div className='mx-auto mt-5'>
         <svg
           viewBox='0 0 1024 1024'
@@ -54,8 +55,8 @@ function DrawerListOptions () {
         </Link>
       </button>
       <button
-      id="btnProductsOptionMenu"
-      cy-data-test-id="productos"
+        id="btnProductsOptionMenu"
+        cy-data-test-id="productos"
         className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
         <svg
           fill='#A7B7DD'
