@@ -13,6 +13,14 @@ const userReducer = createSlice({
       avatar: ''
     }
   },
+  reducers: {
+    setUserData: (state, action) => {
+      state.userData = action.payload 
+    },
+    setIsAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(authUser.fulfilled, (state, action) => {
@@ -51,5 +59,7 @@ const userReducer = createSlice({
       })
   }
 })
+
+export const {setUserData, setIsAuthenticated} = userReducer.actions
 
 export default userReducer

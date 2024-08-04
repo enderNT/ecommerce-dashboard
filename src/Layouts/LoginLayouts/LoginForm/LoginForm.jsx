@@ -105,6 +105,7 @@ export default function LoginForm () {
         />
       </label>
       <button
+        data-cy="signIn-btn"
         disabled={loginBtnActive ?? null}
         onClick={() => authenticate(userDataObj)}
         className='my-2 bg-[#2C2C2C] btn btn-active text-[#F5F5F5]'

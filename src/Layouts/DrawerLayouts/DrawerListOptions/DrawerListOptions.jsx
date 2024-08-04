@@ -39,7 +39,9 @@ function DrawerListOptions () {
         </svg>
         Order
       </button>
-      <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
+      <button
+      cy-data-test-id="productos"
+        className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
         <svg
           fill='#A7B7DD'
           viewBox='0 0 16 16'

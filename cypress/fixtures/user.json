@@ -1,0 +1,16 @@
+{
+	"record": {
+		"avatar": "",
+		"collectionId": "_pb_users_auth_",
+		"collectionName": "users",
+		"created": "2024-07-28 20:36:14.445Z",
+		"email": "cat@kat.com",
+		"emailVisibility": false,
+		"id": "vwnrhnav9mkh5uh",
+		"name": "khaterin diaz",
+		"updated": "2024-07-29 02:42:25.503Z",
+		"username": "kat89",
+		"verified": true
+	},
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2xsZWN0aW9uSWQiOiJfcGJfdXNlcnNfYXV0aF8iLCJleHAiOjE3MjM0Mzk3MDUsImlkIjoidnducmhuYXY5bWtoNXVoIiwidHlwZSI6ImF1dGhSZWNvcmQifQ.loWabYN5ys0Peiog16r7gcJoQbFw_fYGyuuCPnOYL9I"
+}
