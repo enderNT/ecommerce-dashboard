@@ -27,7 +27,6 @@ export const loginApiCall = async (body) => {
  * @returns Object response
  */
 export const registerApiCall = async (body) => {
-  console.log('LA VARIABLE DE ENTORNO ES:\n', API_URL)
   const data = await apiCall({
     body,
     endpoint: PATH.register,

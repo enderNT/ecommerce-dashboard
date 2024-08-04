@@ -6,6 +6,6 @@ export default defineConfig({
       framework: "react",
       bundler: "vite",
     },
-    supportFile: './cypress/support/component.jsx'
+    supportFile: './cypress/support/component.js'
   },
 });

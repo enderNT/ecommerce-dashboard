@@ -11,7 +11,7 @@ export const ROUTER = createBrowserRouter([
     element: <Drawer />,
     children: [
       {
-        path: '/dashboard',
+        path: 'dashboard',
         element: <HeroPage />
       },
       {
@@ -21,11 +21,11 @@ export const ROUTER = createBrowserRouter([
     ]
   },
   {
-    path: 'login',
+    path: '/login',
     element: <LoginPage />
   },
   {
-    path: 'register',
+    path: '/register',
     element: <RegisterPage />
   }
 ])

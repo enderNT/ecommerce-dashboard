@@ -1,11 +1,19 @@
 import React from 'react'
 import LoginForm from './LoginForm'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { STORE } from '../../../redux/store'
 
-describe('<LoginForm />', () => {
+describe('Given: <LoginForm />', () => {
 
   beforeEach(() => {
-    // Given: The loginForm Mounted
-    cy.mount(<LoginForm />)
+    cy.mount(
+      <Provider store={STORE}>
+      <MemoryRouter initialEntries={['/']}>
+          <LoginForm />
+      </MemoryRouter>
+  </Provider>
+    )
   })
 
   it('Render the Login Form', () => {
