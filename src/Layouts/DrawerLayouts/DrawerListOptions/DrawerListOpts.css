@@ -1,0 +1,3 @@
+#btnProductsOptionMenu, #btnShippingOptionMenu, #btnPaymentsOptionsMenu {
+    pointer-events: none;
+}

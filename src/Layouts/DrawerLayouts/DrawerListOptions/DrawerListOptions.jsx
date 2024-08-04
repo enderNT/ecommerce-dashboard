@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import './DrawerListOpts.css'
 
 function DrawerListOptions () {
+  const location = useLocation()
+  const clasNameActive = (locationPath, locationPathTarget) => {
+    if(locationPath === locationPathTarget) {
+      return 'btn bg-[#F8FAFF] text-[#2A4178] text-base font-medium border-none shadow-md mt-11 mx-8'
+    }
+    return 'btn bg-white text-base font-medium border-none mt-11 mx-8'
+  }
   return (
     <ul className='menu bg-white min-h-full w-80'>
       <div className='mx-auto mt-5'>
@@ -15,10 +23,10 @@ function DrawerListOptions () {
           />
         </svg>
       </div>
-      <button className='btn bg-[#F8FAFF] text-[#2A4178] text-base font-medium border-none shadow-md mt-11 mx-8'>
+      <button className={clasNameActive(location.pathname, '/dashboard')}>
         <svg
           viewBox='0 0 24 24'
-          fill='#2A4178'
+          fill={location.pathname === '/dashboard' ? '#2A4178' : '#A7B7DD'}
           height='1em'
           width='1em'
         >
@@ -30,10 +38,10 @@ function DrawerListOptions () {
           Dashboard
         </Link>
       </button>
-      <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
+      <button className={clasNameActive(location.pathname, '/orders')}>
         <svg
           viewBox='0 0 1024 1024'
-          fill='#A7B7DD'
+          fill={location.pathname === '/orders' ? '#2A4178' : '#A7B7DD'}
           height='1em'
           width='1em'
         >
@@ -46,6 +54,7 @@ function DrawerListOptions () {
         </Link>
       </button>
       <button
+      id="btnProductsOptionMenu"
       cy-data-test-id="productos"
         className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
         <svg
@@ -60,7 +69,7 @@ function DrawerListOptions () {
         </svg>
         Products
       </button>
-      <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
+      <button id="btnShippingOptionMenu" className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
         <svg
           viewBox='0 0 24 24'
           fill='#A7B7DD'
@@ -73,7 +82,7 @@ function DrawerListOptions () {
         </svg>
         Shipping
       </button>
-      <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
+      <button id="btnPaymentsOptionsMenu" className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
         <svg
           fill='none'
           stroke='#A7B7DD'
@@ -89,10 +98,10 @@ function DrawerListOptions () {
         </svg>
         Payments
       </button>
-      <button className='btn bg-white text-base font-medium border-none mt-11 mx-8'>
+      <button className={clasNameActive(location.pathname, '/settings')}>
         <svg
           viewBox='0 0 512 512'
-          fill='#A7B7DD'
+          fill={location.pathname === '/settings' ? '#2A4178' : '#A7B7DD'}
           height='1em'
           width='1em'
         >
