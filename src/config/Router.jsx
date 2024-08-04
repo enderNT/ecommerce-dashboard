@@ -7,15 +7,15 @@ import OrdersPage from '../Pages/Orders/Orders'
 
 export const ROUTER = createBrowserRouter([
   {
-    path: '/dashboard',
+    path: '/',
     element: <Drawer />,
     children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <HeroPage />
       },
       {
-        path: 'orders',
+        path: '/orders',
         element: <OrdersPage />
       }
     ]
