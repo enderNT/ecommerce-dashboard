@@ -1,5 +1,5 @@
-const VITE_API_URL = import.meta.env.VITE_API_URL
-import { apiCall } from './fetch'
+import {VITE_API_URL} from '../constants'
+import { apiCall } from '../fetch'
 
 export const PATH = {
   authenticate: 'api/collections/users/auth-with-password',

@@ -1,4 +1,4 @@
-export const apiCall = async ({ endpoint, method, env, body }) => {
+export const apiCall = async ({ endpoint, method, env, body: {} }) => {
   const response = await fetch(`${env}/${endpoint}`, {
     body: JSON.stringify(body),
     method,
