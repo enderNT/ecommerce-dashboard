@@ -1,14 +1,35 @@
+import Cookies from 'js-cookie'
 import HeroSectionHeader from '../../Layouts/HeroSectionLayouts/HeroSectionHeader/HeroSectionHeader'
 import HeroSectionActions from '../../Layouts/HeroSectionLayouts/HeroSectionActions/HeroSectionActions'
 import HeroSectionInboxCard from '../../Layouts/HeroSectionLayouts/HeroSectionInboxCard/HeroSectionInboxCard'
 import HeroSectionActivityCard from '../../Layouts/HeroSectionLayouts/HeroSectionActivityCard/HeroSectionActivityCard'
 import HeroSectionGraphicCard from '../../Layouts/HeroSectionLayouts/HeroSectionGraphicCard/HeroSectionGraphicCard'
+import useLoader from '../../customHooks/useLoader'
+import { useDispatch, useSelector } from 'react-redux'
+import { getOrders } from '../../redux/reducers/dashboard/dashboardActions&Thunks'
+import { useEffect } from 'react'
 import './HeroPage.css'
+import { saveOrdersInfoR } from '../../redux/reducers/dashboard/dashboardSlice'
 
 export default function HeroPage () {
 
+  const {isLoading} = useSelector(state => state.dashboard)
+  const {loader} = useLoader(isLoading)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getOrders(Cookies.get('token')))
+      .then(response => {
+        console.log('los datos son\n', response)
+        dispatch(saveOrdersInfoR(response.payload.items))
+      })
+      .catch(err => console.error('el error surgio porque...\n', err))
+  }, [dispatch])
+
+
   return (
     <div className='grid grid-auto-rows grid-cols-3 gap-8 p-4'>
+      {loader}
       <HeroSectionHeader />
       <HeroSectionActions />
       <HeroSectionInboxCard />

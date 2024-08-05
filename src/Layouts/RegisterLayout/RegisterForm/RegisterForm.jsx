@@ -84,7 +84,6 @@ export default function RegisterForm () {
         .then(result => {
           const hasId = !!result.payload.id;
           setIsError(!hasId);
-          console.log('TRAE LA SIGUIENTE INFORMACION', result.payload)
           if(!hasId) {
             const err = registerUserMessageError(result.payload)
             setIsError(err)

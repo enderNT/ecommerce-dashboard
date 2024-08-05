@@ -1,19 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getOrders } from "./dashboardActions&Thunks"
+import { getOrders, saveOrdersInfo } from "./dashboardActions&Thunks"
 
 
 const dashBoardReducer = createSlice({
   name: 'dashboard',
   initialState: {
     page: 0,
-	perPage: 10,
-	totalItems: 0,
-	totalPages: 0,
+    perPage: 10,
+    totalItems: 0,
+    totalPages: 0,
     items: [],
     error: false,
-    isLoading: false
+    isLoading: false,
+    ordersInfo: {
+      newOrders: 0,
+      pendingOrders: 0,
+      shippedOrders: 0,
+    }
   },
   reducers: {
+    saveOrdersInfoR: (state, action) => saveOrdersInfo(state, action)
   },
   extraReducers: (builder) => {
     builder
@@ -34,6 +40,6 @@ const dashBoardReducer = createSlice({
   }
 })
 
-export const {} = dashBoardReducer.actions
+export const {saveOrdersInfoR} = dashBoardReducer.actions
 
 export default dashBoardReducer
