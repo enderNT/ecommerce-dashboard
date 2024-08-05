@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { listOrdersApiCall } from "../../../utils/api/dashboardApi";
+import { listMessages, listOrdersApiCall } from "../../../utils/api/dashboardApi";
 
 export const getOrders = createAsyncThunk(
-    'dashboard/orders',
+    'dashboard/orders/list',
     async (token) => {
         const data = await listOrdersApiCall(token)
         return data
@@ -15,5 +15,13 @@ export const saveOrdersInfo = (state, action) => {
     state.ordersInfo.shippedOrders = action.payload.filter(element => element.status === 'SHIPPED').length
     return state
 }
+
+export const getMessages = createAsyncThunk(
+    'dashboard/messages/list',
+    async (token) => {
+        const data = listMessages(token)
+        return data
+    }
+)
 
 

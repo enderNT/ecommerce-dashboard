@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getOrders, saveOrdersInfo } from "./dashboardActions&Thunks"
+import { getMessages, getOrders, saveOrdersInfo } from "./dashboardActions&Thunks"
 
 
 const dashBoardReducer = createSlice({
   name: 'dashboard',
   initialState: {
-    page: 0,
-    perPage: 10,
-    totalItems: 0,
-    totalPages: 0,
-    items: [],
+    orderItems: [],
+    messageItems: [],
     error: false,
     isLoading: false,
     ordersInfo: {
@@ -24,10 +21,7 @@ const dashBoardReducer = createSlice({
   extraReducers: (builder) => {
     builder
         .addCase(getOrders.fulfilled, (state, action) => {
-            state.page = action.payload.page
-            state.totalItems = action.payload.totalItems
-            state.totalPages = action.payload.totalPages
-            state.items = action.payload.items
+            state.orderItems = action.payload.items
             state.error = false
             state.isLoading = false
         })
@@ -36,6 +30,11 @@ const dashBoardReducer = createSlice({
         })
         .addCase(getOrders.rejected, (state) => {
             state.error = true
+        })
+        .addCase(getMessages.fulfilled, (state, action) => {
+          state.messageItems = action.payload.items
+          state.error = false
+          state.isLoading = false
         })
   }
 })
