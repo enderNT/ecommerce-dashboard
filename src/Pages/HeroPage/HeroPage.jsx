@@ -12,6 +12,8 @@ export default function HeroPage () {
   const { isAuthenticated, userData } = useSelector(state => state.user)
   const hasData = Boolean(userData)
 
+  console.log('DEBERIA DE ENTRAR O NO?', !hasData, !Cookies.get('token'))
+
   if (!hasData || !Cookies.get('token')) {
     Cookies.remove('token')
     return <Navigate to='/login' replace />
