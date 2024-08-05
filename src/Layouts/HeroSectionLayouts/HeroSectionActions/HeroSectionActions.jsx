@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 
 export default function HeroSectionActions () {
   const {ordersInfo} = useSelector(state => state.dashboard)
-  console.log(ordersInfo)
   return (
     <div className='grid col-span-3 grid-cols-subgrid mx-6 text-white'>
       <div className='bg-gradient-to-r from-[#6BAAFC] to-[#305FEC] rounded-2xl'>

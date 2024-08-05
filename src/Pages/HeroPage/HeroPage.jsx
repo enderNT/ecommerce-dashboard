@@ -8,8 +8,8 @@ import useLoader from '../../customHooks/useLoader'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrders } from '../../redux/reducers/dashboard/dashboardActions&Thunks'
 import { useEffect } from 'react'
-import './HeroPage.css'
 import { saveOrdersInfoR } from '../../redux/reducers/dashboard/dashboardSlice'
+import './HeroPage.css'
 
 export default function HeroPage () {
 
@@ -20,7 +20,6 @@ export default function HeroPage () {
   useEffect(() => {
     dispatch(getOrders(Cookies.get('token')))
       .then(response => {
-        console.log('los datos son\n', response)
         dispatch(saveOrdersInfoR(response.payload.items))
       })
       .catch(err => console.error('el error surgio porque...\n', err))
