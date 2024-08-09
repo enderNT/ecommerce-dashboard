@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getMessages, getOrders, saveOrdersInfo } from "./dashboardActions&Thunks"
+import { getMessages, getOrders, saveOrdersInfo, setTotalRevenueAction } from "./dashboardActions&Thunks"
 
 
 const dashBoardReducer = createSlice({
@@ -7,6 +7,7 @@ const dashBoardReducer = createSlice({
   initialState: {
     orderItems: [],
     messageItems: [],
+    totalRevenue: 0,
     error: false,
     isLoading: false,
     ordersInfo: {
@@ -16,7 +17,8 @@ const dashBoardReducer = createSlice({
     }
   },
   reducers: {
-    saveOrdersInfoR: (state, action) => saveOrdersInfo(state, action)
+    saveOrdersInfoR: (state, action) => saveOrdersInfo(state, action),
+    setTotalRevenueReducer: (state, action) => setTotalRevenueAction(state, action)
   },
   extraReducers: (builder) => {
     builder
@@ -39,6 +41,6 @@ const dashBoardReducer = createSlice({
   }
 })
 
-export const {saveOrdersInfoR} = dashBoardReducer.actions
+export const {saveOrdersInfoR, setTotalRevenueReducer} = dashBoardReducer.actions
 
 export default dashBoardReducer

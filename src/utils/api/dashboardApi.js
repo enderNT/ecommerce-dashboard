@@ -16,7 +16,7 @@ export const listOrdersApiCall = async (token) => {
     return data;
 }
 
-export const listMessages = async (token) => {
+export const listMessagesApiCall = async (token) => {
     const data = await apiCall({
         endpoint: PATH.messages,
         env: VITE_API_URL,

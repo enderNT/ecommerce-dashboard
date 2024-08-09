@@ -10,27 +10,38 @@ export default function HeroSectionInboxCard () {
 
   useEffect(() => {
     dispatch(getMessages(Cookies.get('token')))
-      .then(response => console.log('los items son', response))
+      .then(response => response)
       .catch()
   }, [dispatch])
 
+  const formatMessageTimeStamp = (time) => {
+    const result = []
+    const splited = time.split(':')
+    splited.forEach((element, index) => {
+      if(index === 0 || index === 1) result.push(element)
+    })
+  return result.join(':')
+  }
+
   const messageTemplate = (messagesList) => {
-    console.log('LA LISTA DE MENSAJES AQUI ESTA', messagesList)
     return messagesList.map((message, index) => {
       return (
-          <div key={index+1} className='mx-8 mt-6 flex justify-between'>
+        <div key={index+1}>
+          <div className='mx-8 my-4 flex justify-between'>
             <h6 className='font-medium text-sm text-[#252733]'>{message.content}</h6>
-            <label className='font-medium text-sm text-[#9FA2B4]'>{message.created}</label>
+            <label className='font-medium text-sm text-[#9FA2B4]'>{formatMessageTimeStamp(message.created)}</label>
           </div>
+          {index+1 !== messagesList.length && <div className="divider"></div>}
+        </div>
       )
     })
   }
 
   return (
     <div
-      className='py-6 bg-white shadow-md ml-6 w-[36vw] grid row-start-3 text-black rounded-2xl'
+      className='py-6 bg-white shadow-md ml-6 w-[36vw] grid row-start-3 row-span-2 text-black rounded-2xl'
     >
-      <div className='flex justify-between'>
+      <div className='flex justify-between mb-4'>
         <div className='mx-8'>
           <h4 className='font-bold text-lg'>Inbox</h4>
           <label className='font-normal text-xs text-[#9FA2B4]'>Group: </label> <label className='font-normal text-xs text-[#4B506D]'>Support</label>
@@ -39,15 +50,6 @@ export default function HeroSectionInboxCard () {
       </div>
       <ul>
         {messageTemplate(messageItems)}
-        {/* <div className='mx-8 mt-6 flex justify-between'>
-          <h6 className='font-medium text-sm text-[#252733]'>Elemento 1</h6>
-          <label className='font-medium text-sm text-[#9FA2B4]'>4:39</label>
-        </div>
-        <div className='divider' />
-        <div className='mx-8 flex justify-between'>
-          <h6 className='font-medium text-sm text-[#252733]'>Elemento 2</h6>
-          <label className='font-medium text-sm text-[#9FA2B4]'>7:39</label>
-        </div> */}
       </ul>
     </div>
   )
