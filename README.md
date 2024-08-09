@@ -52,7 +52,7 @@ Aquí hay algunas capturas de pantalla del proyecto:
 ### Pantalla Principal (Pagina - dashboard)
 ![Pagina principal (dashboard)](public/screenshots/dashboard.png)
 ![Pagina de registro](public/screenshots/register.png)
-![Pagina de login](public/screenshots/login.png)
+![Pagina de login](public/screenshots/sigin.png)
 
 ## Tecnologías Utilizadas
 
