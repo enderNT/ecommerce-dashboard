@@ -1,8 +1,10 @@
 import './HeroSectionHeader.css'
 import HeroSectionHeaderInput from '../HeroSectionHeaderInput/HeroSectionHeaderInput'
 import HeroSectionHeaderIndicators from '../HeroSectionHeaderIndicators/HeroSectionHeaderIndicators'
+import { useSelector } from 'react-redux'
 
 export default function HeroSectionHeader () {
+  const {totalRevenue} = useSelector(state => state.dashboard)
   return (
     <div className='grid col-span-3 grid-cols-subgrid'>
       <div
@@ -13,7 +15,7 @@ export default function HeroSectionHeader () {
         <div className='flex items-center'>
           <h2
             data-cy='revenueText'
-            className='text-black text-[28px] font-semibold mr-4'>$9999</h2>
+            className='text-black text-[28px] font-semibold mr-4'>$ {totalRevenue}</h2>
           <svg
             viewBox='0 0 20 20'
             fill='red'

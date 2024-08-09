@@ -2,13 +2,12 @@ import Cookies from 'js-cookie'
 import HeroSectionHeader from '../../Layouts/HeroSectionLayouts/HeroSectionHeader/HeroSectionHeader'
 import HeroSectionActions from '../../Layouts/HeroSectionLayouts/HeroSectionActions/HeroSectionActions'
 import HeroSectionInboxCard from '../../Layouts/HeroSectionLayouts/HeroSectionInboxCard/HeroSectionInboxCard'
-import HeroSectionActivityCard from '../../Layouts/HeroSectionLayouts/HeroSectionActivityCard/HeroSectionActivityCard'
 import HeroSectionGraphicCard from '../../Layouts/HeroSectionLayouts/HeroSectionGraphicCard/HeroSectionGraphicCard'
 import useLoader from '../../customHooks/useLoader'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrders } from '../../redux/reducers/dashboard/dashboardActions&Thunks'
 import { useEffect } from 'react'
-import { saveOrdersInfoR } from '../../redux/reducers/dashboard/dashboardSlice'
+import { saveOrdersInfoR, setTotalRevenueReducer } from '../../redux/reducers/dashboard/dashboardSlice'
 import './HeroPage.css'
 
 export default function HeroPage () {
@@ -21,6 +20,7 @@ export default function HeroPage () {
     dispatch(getOrders(Cookies.get('token')))
       .then(response => {
         dispatch(saveOrdersInfoR(response.payload.items))
+        dispatch(setTotalRevenueReducer(response.payload.items))
       })
       .catch(err => console.error('el error surgio porque...\n', err))
   }, [dispatch])
@@ -32,7 +32,6 @@ export default function HeroPage () {
       <HeroSectionHeader />
       <HeroSectionActions />
       <HeroSectionInboxCard />
-      <HeroSectionActivityCard />
       <HeroSectionGraphicCard />
     </div>
   )

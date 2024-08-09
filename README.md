@@ -50,7 +50,9 @@ Este comando iniciará el servidor de desarrollo de Vite y podrás acceder a la 
 Aquí hay algunas capturas de pantalla del proyecto:
 
 ### Pantalla Principal (Pagina - dashboard)
-![Paginas principal (dashboard)](public/screenshots/dashboard.png)
+![Pagina principal (dashboard)](public/screenshots/dashboard.png)
+![Pagina de registro](public/screenshots/register.png)
+![Pagina de login](public/screenshots/login.png)
 
 ## Tecnologías Utilizadas
 
