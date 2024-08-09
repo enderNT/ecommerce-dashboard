@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
 
 export default function useLoader(loaderStatus) {
-    // const {isLoading} = useSelector(state => state.user)
 
     const [loader, setLoader] = useState(null)
 
@@ -20,7 +18,6 @@ export default function useLoader(loaderStatus) {
         }
         return setLoader(null)
     }
-
 
     useEffect(() => {
         showLoader(loaderStatus)
